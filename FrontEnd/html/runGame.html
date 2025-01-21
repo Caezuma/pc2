@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Uno</title>
+    <link rel="stylesheet" href="../css/gameBody.css">
+    <style>
+    .card-container {
+        display: flex;
+        align-items: center;
+        gap: 10px; 
+    }
+
+    .card-image {
+        width: 55px; 
+        height: auto; 
+    }
+
+    .player-card {
+        display: none; 
+    }
+
+    .cards-player {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        padding: 10px;
+        margin-bottom: 20px;
+        gap: 0; 
+    }
+
+    .cards-player img {
+        width: 55px; 
+        height: auto;
+        cursor: pointer;
+        margin-left: -18px;
+        z-index: 1; 
+        transition: transform 0.3s; 
+    }
+
+    .cards-player img:hover {
+        transform: translateY(-10px); 
+        transform: scale(1.1);
+    }
+
+    .center-right-div, .center-left-div {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column; 
+        padding: 10px;
+    }
+
+    .center-right-div {
+        right: 0;
+        margin-right: 30px;
+    }
+
+    .center-right-div img {
+        width: 55px; 
+        height: auto; 
+        transform: rotate(-90deg);
+        margin-top: -45px;
+    }
+
+    .center-left-div {
+        left: 0;
+        margin-left: 30px;
+    }
+
+    .center-left-div img {
+        width: 55px; 
+        height: auto; 
+        transform: rotate(90deg);
+        margin-top: -45px;
+    }
+
+    .top-player-cards {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        margin-top: 65px;
+    }
+
+    .top-player-cards img {
+        width: 55px; 
+        height: auto; 
+        margin-left: -18px;
+        transform: rotate(180deg);
+    }
+
+    @keyframes moveCardToPlayer {
+    0% {
+        transform: translateY(0); 
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(200px); 
+        opacity: 0; 
+    }
+    }
+
+    .card-to-player {
+        animation: moveCardToPlayer 1s forwards; 
+    }
+
+    @keyframes moveCardUp {
+    0% {
+        transform: translateY(0); 
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px); 
+        opacity: 0; 
+    }
+    }
+
+    .card-playing {
+        animation: moveCardUp 1s forwards; 
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="../../UnoImage/ImgPackage/UnoLogo.png" alt="UNO Logo" class="logo">
+        <div class="header-content">
+          <img src="../../UnoImage/ImgPackage/HeaderColorsDetails.png" alt="COLORS Details" class="header-details">
+            
+          <div class="button-container">
+            <button id="leave-button">Leave</button>
+          </div>
+        </div>
+    </header>
+
+    <div class="card-container">
+        <img id="top-card-image" class="card-image" src="../../UnoImage/CardPackage/Deck Card.png" alt="Carta Do Topo">
+        <img id="card-image" class="card-image player-card" src="" alt="Carta Uno">
+    </div>
+
+    <div id="cards-player" class="cards-player"> 
+    </div>
+
+    <div class="center-right-div">
+        <img src="../../UnoImage/CardPackage/Deck Card.png" alt="Deck Card">
+        <img src="../../UnoImage/CardPackage/Deck Card.png" alt="Deck Card">
+    </div>
+
+    <div class="center-left-div">
+        <img src="../../UnoImage/CardPackage/Deck Card.png" alt="Deck Card">
+        <img src="../../UnoImage/CardPackage/Deck Card.png" alt="Deck Card">
+        <img src="../../UnoImage/CardPackage/Deck Card.png" alt="Deck Card">
+        <img src="../../UnoImage/CardPackage/Deck Card.png" alt="Deck Card">
+    </div>
+
+    <div class="top-player-cards">
+        <script>
+            const numberOfCards = 7; 
+            const imagePath = "../../UnoImage/CardPackage/Deck Card.png"; 
+    
+            for (let i = 0; i < numberOfCards; i++) {
+                document.write(`<img src="${imagePath}" alt="Deck Card">`);
+            }
+        </script>
+    </div>
+
+    <script src="../js/scriptRunGame.js"></script>
+</body>
+</html>

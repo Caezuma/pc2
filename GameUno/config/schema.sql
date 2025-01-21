@@ -1,0 +1,43 @@
+CREATE TABLE IF NOT EXISTS uno_games (
+    id SERIAL PRIMARY KEY,
+    statusgame BOOLEAN DEFAULT FALSE,
+    title VARCHAR(255) NOT NULL,
+    rules VARCHAR(255),
+    topcard VARCHAR(50),
+    max_players INTEGER,
+    gameowner VARCHAR(255),
+    gameturn VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS players (
+    id SERIAL PRIMARY KEY,
+    nameplayer VARCHAR(255) NOT NULL,
+    age INTEGER NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    userpassword VARCHAR(255) NOT NULL,
+    gameid INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS cards (
+    id SERIAL PRIMARY KEY,
+    color VARCHAR(50), 
+    valuecard VARCHAR(50),
+    game_id INTEGER,
+    player_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS scores (
+    id SERIAL PRIMARY KEY,
+    player_id INTEGER,
+    score INTEGER,
+    game_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
